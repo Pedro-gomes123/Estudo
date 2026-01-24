@@ -70,12 +70,19 @@ print(Lucro)
 
 
 print("\n--- PERGUNTA 2: Drill-Down (Aprofundamento) ---")
-# Agora que você sabe qual é o Gênero nº 1 (provavelmente Rock ou Latin),
+# Agora que você sabe qual é o Gênero nº 1 (provavelmente Rock),
 # Crie um filtro para pegar APENAS as vendas desse gênero específico.
 # df_top_genero = df_final[df_final['Nome_Genero'] == 'Nome Do Genero Campeao']
 
+df_top_genero = df_final[df_final['Nome_Genero'] == 'Rock' ]
+print(df_top_genero)
+
 print("--- Dentro do Gênero Campeão, qual a música mais vendida? ---")
+
 # Agrupe esse df filtrado (df_top_genero) pelo nome da música ('Name'),
 # some o 'Total_Item' e mostre a campeã.
 # top_musica = ...
 # print(top_musica.head(1))
+
+top_musica = df_top_genero.groupby('Name')['Total Vendido'].sum().sort_values(ascending=False)
+print(top_musica)
